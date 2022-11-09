@@ -10,11 +10,11 @@ function Headerbar() {
       </div>
       <div className="headerCenter">
         <div className="searchBar">
-          <Search />
+          <Search className="searchIcon"/>
           <input placeholder="Search For Friends or posts" className="search"/>
         </div>
       </div>
-      <div className="headeRight">
+      <div className="headerRight">
         <div className="headerBarLinks">
           <span className="headerBarLink">Homepage</span>
           <span className="headerBarLink">TimeLine</span>
