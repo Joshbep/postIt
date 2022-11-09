@@ -1,0 +1,28 @@
+.headerBar {
+  height: 50px;
+  width: 100%;
+  background-color: blue;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+.headerLeft {
+  flex: 3;
+}
+
+.appName {
+  font-size: 24px;
+  margin-left: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.headerCenter {
+  flex: 5;
+}
+
+.headerRight {
+  flex: 4;
+}
