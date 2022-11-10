@@ -1,0 +1,24 @@
+.left {
+  flex: 3;
+  height: calc(100vh - 50px);
+}
+
+.wrapper {
+  padding: 20px;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.icon {
+  margin-right: 15px;
+}

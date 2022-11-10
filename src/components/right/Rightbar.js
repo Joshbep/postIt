@@ -4,7 +4,7 @@ import React from 'react'
 
 function Rightbar() {
   return (
-    <div>
+    <div className="right">
     rightbar
     </div>
   );
