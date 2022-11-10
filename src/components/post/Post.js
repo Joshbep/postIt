@@ -24,9 +24,10 @@ function Post() {
         <div className="postsBottom">
           <div className="postsBottomLeft">
             <Favorite  className="heartIcon"/>
-            <span className="HeartCounter"></span>
+            <span className="heartCounter"> 32 likes</span>
           </div>
           <div className="postsBottomRight">
+            <span className="postsComment">5 comments</span>
           </div>
         </div>
     </div>
