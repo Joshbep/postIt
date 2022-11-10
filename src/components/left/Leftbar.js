@@ -24,35 +24,35 @@ function Leftbar() {
           </li>
           <li className="listItem">
             <Chat className="icon"/>
-            <span className="listItemText">Feed</span>
+            <span className="listItemText">Chats</span>
           </li>
           <li className="listItem">
             <PlayCircleFilledOutlined className="icon"/>
-            <span className="listItemText">Feed</span>
+            <span className="listItemText">Videos</span>
           </li>
           <li className="listItem">
             <Group className="icon"/>
-            <span className="listItemText">Feed</span>
+            <span className="listItemText">Groups</span>
           </li>
           <li className="listItem">
             <Bookmark className="icon"/>
-            <span className="listItemText">Feed</span>
+            <span className="listItemText">Bookmarks</span>
           </li>
           <li className="listItem">
             <HelpOutline className="icon"/>
-            <span className="listItemText">Feed</span>
+            <span className="listItemText">Questions</span>
           </li>
           <li className="listItem">
             <WorkOutline className="icon"/>
-            <span className="listItemText">Feed</span>
+            <span className="listItemText">Jobs</span>
           </li>
           <li className="listItem">
             <Event className="icon"/>
-            <span className="listItemText">Feed</span>
+            <span className="listItemText">Events</span>
           </li>
           <li className="listItem">
             <School className="icon"/>
-            <span className="listItemText">Feed</span>
+            <span className="listItemText">School</span>
           </li>
         </ul>
         <button className="leftButton"> Show More</button>
@@ -60,7 +60,7 @@ function Leftbar() {
         <ul className="leftFriendList">
           <li className="friend">
             <img className="leftFriendImage" src="" alt=""/>
-            <span className="leftFriendName"></span>
+            <span className="leftFriendName">Josh Pasour</span>
           </li>
         </ul>
       </div>
