@@ -43,29 +43,6 @@
   border: none;
   padding: 10px;
   border-radius: 5px;
+  background-color: #1B8AD7;
   font-weight: bold;
-}
-
-.leftHr {
-  margin: 20px 0;
-}
-
-.leftFriendList {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.friend {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.leftFriendImage {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 10px;
 }

@@ -5,7 +5,10 @@ import React from 'react'
 function Rightbar() {
   return (
     <div className="right">
-    rightbar
+      <div className="rightWrapper">
+        <div className="twitterClone">
+        </div>
+      </div>
     </div>
   );
 }
