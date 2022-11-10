@@ -8,3 +8,68 @@
 .wrapper {
   padding: 10px;
 }
+
+.postTop {
+  display: flex;
+  align-items: center;
+}
+
+.postImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.postInput {
+  border: none;
+  width: 80%;
+}
+
+.postInput:focus {
+  outline: none;
+}
+
+.postHr {
+  margin: 20px;
+}
+
+.postBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.postOptions {
+  display: flex;
+  margin-left: 20px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.postIcon {
+  font-size: 18px;
+  margin-right: 3px;
+}
+
+.optionText {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.postButton {
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  background-color: green;
+  font-weight: 500;
+  margin-right: 20px;
+  cursor: pointer;
+  color: white;
+}
