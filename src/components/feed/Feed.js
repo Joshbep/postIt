@@ -1,11 +1,14 @@
 import './feed.css';
 import React from 'react'
+import Makepost from '../makePost/Makepost.js'
 
 
 function Feed() {
   return (
     <div className="feed">
-    feed
+      <div className="wrapper">
+        <Makepost />
+      </div>
     </div>
   );
 }
