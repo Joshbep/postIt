@@ -11,14 +11,10 @@ function Headerbar() {
       <div className="headerCenter">
         <div className="searchBar">
           <Search className="searchIcon"/>
-          <input placeholder="Search For Friends or posts" className="search"/>
+          <input placeholder="Search Post It" className="search"/>
         </div>
       </div>
       <div className="headerRight">
-        <div className="headerBarLinks">
-          <span className="headerBarLink">Homepage</span>
-          <span className="headerBarLink">TimeLine</span>
-        </div>
         <div className="headerBarIcons">
           <div className="barIcon">
             <Person />
@@ -37,7 +33,7 @@ function Headerbar() {
             <span className="barIconCounter">1</span>
           </div>
         </div>
-        <img className="headerImg"/>
+        <img className="headerImg" alt="" src=""/>
       </div>
     </div>
   );
