@@ -10,15 +10,15 @@ import './makePost.css'
 
 function Makepost() {
   return (
-    <div className="post">
-      <div className="wrapper">
-        <div className="postTop">
-          <img className="postImage" src="" alt=""/>
-          <input className="postInput" placeholder="What's on your mind?" />
+    <div className="posting">
+      <div className="postingWrapper">
+        <div className="postingTop">
+          <img className="postingImage" src="" alt=""/>
+          <input className="postingInput" placeholder="What's on your mind?" />
         </div>
-        <hr className="postHr" />
-        <div className="postBottom">
-          <div className="postOptions">
+        <hr className="postingHr" />
+        <div className="postingBottom">
+          <div className="postingOptions">
             <div className="option">
               <PermMedia htmlColor="tomato" className="postIcon" />
               <span className="optionText"> Photo/Video</span>
@@ -36,7 +36,7 @@ function Makepost() {
               <span className="optionText"> Emojis</span>
             </div>
           </div>
-          <button className="postButton">Post</button>
+          <button className="postingButton">Post</button>
         </div>
       </div>
     </div>

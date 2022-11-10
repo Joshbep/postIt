@@ -1,6 +1,7 @@
 import './feed.css';
 import React from 'react'
 import Makepost from '../makePost/Makepost.js'
+import Post from '../post/Post.js'
 
 
 function Feed() {
@@ -8,6 +9,7 @@ function Feed() {
     <div className="feed">
       <div className="wrapper">
         <Makepost />
+        <Post />
       </div>
     </div>
   );

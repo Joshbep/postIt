@@ -1,20 +1,20 @@
-.post {
+.posting {
   width: 100%;
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
   box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
 }
 
-.wrapper {
+.postingWrapper {
   padding: 10px;
 }
 
-.postTop {
+.postingTop {
   display: flex;
   align-items: center;
 }
 
-.postImage {
+.postingImage {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -22,26 +22,26 @@
   margin-right: 10px;
 }
 
-.postInput {
+.postingInput {
   border: none;
   width: 80%;
 }
 
-.postInput:focus {
+.postingInput:focus {
   outline: none;
 }
 
-.postHr {
+.postingHr {
   margin: 20px;
 }
 
-.postBottom {
+.postingBottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.postOptions {
+.postingOptions {
   display: flex;
   margin-left: 20px;
 }
@@ -53,7 +53,7 @@
   cursor: pointer;
 }
 
-.postIcon {
+.postingIcon {
   font-size: 18px;
   margin-right: 3px;
 }
@@ -63,7 +63,7 @@
   font-weight: 500;
 }
 
-.postButton {
+.postingButton {
   border: none;
   padding: 7px;
   border-radius: 5px;
