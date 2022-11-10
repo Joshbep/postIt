@@ -1,4 +1,5 @@
 import React from 'react'
+import {MoreVert, Favorite} from '@material-ui/icons'
 import './post.css'
 
 function Post() {
@@ -7,14 +8,26 @@ function Post() {
       <div className="postsWrapper">
       </div>
         <div className="postsTop">
-          <div className="postsTopRight">
-          </div>
           <div className="postsTopLeft">
+            <img  className="postsProfileImage" alt="" src=""/>
+            <span className="postsUsername">Josh Pasour</span>
+            <span className="postsDate">2 days ago</span>
+          </div>
+          <div className="postsTopRight">
+            <MoreVert />
           </div>
         </div>
         <div className="postsCenter">
+          <span className="postsText">Posting here right now</span>
+          <img className="postsImage" src="" alt=""/>
         </div>
         <div className="postsBottom">
+          <div className="postsBottomLeft">
+            <Favorite  className="heartIcon"/>
+            <span className="HeartCounter"></span>
+          </div>
+          <div className="postsBottomRight">
+          </div>
         </div>
     </div>
   );
