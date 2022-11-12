@@ -1,10 +1,16 @@
-import React from 'react'
+import {React, useState} from 'react'
 import {MoreVert, Favorite} from '@material-ui/icons'
 import './post.css'
 import { Users } from "../../data.js"
 
 function Post({post}) {
+  const [like, setLike] = useState(post.likes)
+  const [isLiked, setIsLiked] = useState(false)
   const user = Users.filter(u=>u.id===1)
+
+  const heartHandler = () => {
+    setLike(isLiked ? like-1 : like+1)
+  }
   return (
     <div className="posts">
       <div className="postsWrapper">
@@ -25,8 +31,8 @@ function Post({post}) {
         </div>
         <div className="postsBottom">
           <div className="postsBottomLeft">
-            <Favorite  className="heartIcon"/>
-            <span className="heartCounter"> {post.likes}</span>
+            <Favorite  className="heartIcon" onClick={heartHandler}/>
+            <span className="heartCounter"> {like}</span>
           </div>
           <div className="postsBottomRight">
             <span className="postsComment">{post.comments}</span>
