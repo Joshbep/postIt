@@ -10,6 +10,7 @@ function Post({post}) {
 
   const heartHandler = () => {
     setLike(isLiked ? like-1 : like+1)
+    setIsLiked(!isLiked)
   }
   return (
     <div className="posts">
