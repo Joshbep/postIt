@@ -1,8 +1,8 @@
 .left {
-  flex: 0.3;
-  min-width: 25%;
-  margin-left: 20px;
-  margin-right: 0px;
+  flex: 3;
+  height: calc(100vh - 50px);
+  position: sticky;
+  top: 50px;
 }
 
 .leftWrapper {
