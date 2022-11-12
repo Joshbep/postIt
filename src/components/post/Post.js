@@ -36,7 +36,7 @@ function Post({post}) {
             <span className="heartCounter"> {like}</span>
           </div>
           <div className="postsBottomRight">
-            <span className="postsComment">{post.comments}</span>
+            <span className="postsComment">{post.comments} comments</span>
           </div>
         </div>
     </div>
