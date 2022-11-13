@@ -22,6 +22,11 @@ function Profile() {
             <h4 className="profileInfoName">Josh Pasour</h4>
             <span className="profileInfoDescription">Software Engineer</span>
           </div>
+          <span className="joined">Joined in 2020</span>
+          <div className="profileFollowingInfo">
+            <span className="profileFollowing"><strong>221</strong> Following</span>
+            <span className="profileFollowers"><strong>221</strong> followers</span>
+          </div>
         </div>
         <div className="profileCenterBottom">
           <Feed />

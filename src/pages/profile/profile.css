@@ -6,6 +6,10 @@
   flex: 9;
 }
 
+.profileCenterTop {
+  border-bottom: 1px solid black;
+}
+
 .profileCover {
   height: 320px;
   position: relative;
@@ -41,7 +45,21 @@
 
 .profileInfoDescription {
   font-weight: 300;
+  margin-bottom: 10px;
 }
+
+.profileFollowingInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.profileFollowing {
+  margin-right: 20px;
+}
+
 
 .profileCenterBottom {
   display: flex;
