@@ -1,21 +1,21 @@
 import React from 'react'
-import "./login.css"
+import "./register.css"
 
-function Login () {
+function Register () {
   return (
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
           <h3 className="loginApp">POST IT</h3>
-          <span className="LoginDescription">Sign In To POST IT</span>
+          <span className="LoginDescription">Register To Use POST IT</span>
         </div>
         <div className="loginRight">
           <div className="loginSection">
+            <input placeHolder="Username" className="loginInput" />
             <input placeHolder="Email" className="loginInput" />
             <input placeHolder="Password" className="loginInput" />
-            <button className="loginButton">Log in</button>
-            <span className="loginForgot">Forgot Password?</span>
-            <button className="loginRegisterButton">Create a New Account</button>
+            <button className="loginButton">Sign Up</button>
+            <button className="loginRegisterButton">Log in</button>
           </div>
         </div>
       </div>
@@ -23,4 +23,4 @@ function Login () {
   )
 }
 
-export default Login;
+export default Register;
