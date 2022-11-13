@@ -4,7 +4,7 @@ import {Users} from "../../data.js"
 import Tofollow from '../toFollow/Tofollow.js'
 
 
-function Rightbar() {
+function Rightbar({profile}) {
   return (
     <div className="right">
       <div className="rightWrapper">
