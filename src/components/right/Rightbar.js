@@ -5,6 +5,7 @@ import Tofollow from '../toFollow/Tofollow.js'
 
 
 function Rightbar({profile}) {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <div className="right">
       <div className="rightWrapper">

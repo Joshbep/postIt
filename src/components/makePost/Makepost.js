@@ -14,7 +14,7 @@ function Makepost() {
       <div className="postingWrapper">
         <div className="postingTop">
           <img className="postingImage" src="" alt=""/>
-          <input className="postingInput" placeholder="What's on your mind?" />
+          <textarea className="postingInput" placeholder="What's on your mind?" ></textarea>
         </div>
         <hr className="postingHr" />
         <div className="postingBottom">

@@ -6,12 +6,12 @@ export const Users = [
   },
   {
     id:2,
-    profilePicture: "profile/IMG_6622.heic",
+    profilePicture: "profile/1.jpeg",
     username: "Luca Pasour",
   },
   {
     id:3,
-    profilePicture: "profile/IMG_5713.HEIC",
+    profilePicture: "profile/1.jpeg",
     username: "Slushie Pasour",
   },
 ];

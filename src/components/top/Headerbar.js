@@ -1,12 +1,15 @@
 import React from 'react'
 import { Search, Person, Chat, Notifications } from "@material-ui/icons"
 import "./Headerbar.css"
+import {Link} from 'react-router-dom'
 
 function Headerbar() {
   return (
     <div className="headerBar">
       <div className="headerLeft">
-        <span className="appName">Post It</span>
+        <Link to="/" style={{textDecoration:"none"}}>
+          <span className="appName">Post It</span>
+        </Link>
       </div>
       <div className="headerCenter">
         <div className="searchBar">

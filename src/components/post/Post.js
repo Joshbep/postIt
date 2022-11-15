@@ -4,9 +4,10 @@ import './post.css'
 import { Users } from "../../data.js"
 
 function Post({post}) {
-  const [like, setLike] = useState(post.likes)
-  const [isLiked, setIsLiked] = useState(false)
-  const user = Users.filter(u=>u.id===1)
+  const [like, setLike] = useState(post.likes);
+  const [isLiked, setIsLiked] = useState(false);
+  const user = Users.filter(u=>u.id===1);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const heartHandler = () => {
     setLike(isLiked ? like-1 : like+1)
@@ -28,7 +29,7 @@ function Post({post}) {
         </div>
         <div className="postsCenter">
           <span className="postsText">{post?.description}</span>
-          <img className="postsImage" src={post.photo} alt=""/>
+          <img className="postsImage" src={PF+post.photo} alt=""/>
         </div>
         <div className="postsBottom">
           <div className="postsBottomLeft">
