@@ -7,6 +7,14 @@ import Login from  "./pages/login/Login.js"
 import Register from  "./pages/register/Register.js"
 import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom'
 
+let baseURL = ""
+
+if(process.env.NODE_ENV === "development"){
+  baseURL = "http://localhost:3001"
+} else {
+  baseURL = `${process.env.REACT_APP_BACKEND_URL}`
+}
+
 function App() {
   return (
     <BrowserRouter>
