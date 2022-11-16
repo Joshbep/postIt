@@ -1,26 +1,54 @@
-import {React, useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import {MoreVert, Favorite} from '@material-ui/icons'
 import './post.css'
-import { Users } from "../../data.js"
+import {useParams} from 'react-router-dom';
+
+let baseURL = ""
+
+if(process.env.NODE_ENV === "development"){
+  baseURL = "http://localhost:3001"
+} else {
+  baseURL = `${process.env.REACT_APP_BACKEND_URL}`
+}
 
 function Post({post}) {
   const [like, setLike] = useState(post.likes);
   const [isLiked, setIsLiked] = useState(false);
-  const user = Users.filter(u=>u.id===1);
+  const [user, setUser] = useState({});
+  let {id} = useParams()
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  // const getUser = (id) => {
+  //   fetch(baseURL + "/users/" + id, {
+  //     credentials: "include"
+  //   })
+	// 		.then(res => {
+	// 			if(res.status === 200) {
+	// 				return res.json()
+	// 			} else {
+	// 				return []
+	// 			}
+	// 		}).then(data => {
+	// 			console.log('data', data)
+	// 			setUser(data.user)
+	// 		})
+	// }
+  //
+  // useEffect(()=>{
+  //   getUser(id)
+  // }, [])
 
   const heartHandler = () => {
     setLike(isLiked ? like-1 : like+1)
     setIsLiked(!isLiked)
   }
+
   return (
     <div className="posts">
       <div className="postsWrapper">
       </div>
         <div className="postsTop">
           <div className="postsTopLeft">
-            <img  className="postsProfileImage" alt="" src={Users.filter((u)=>u.id === post.userId)[0].profilePicture}/>
-            <span className="postsUsername">{Users.filter((u)=>u.id === post.userId)[0].username}</span>
             <span className="postsDate">{post.date}</span>
           </div>
           <div className="postsTopRight">
