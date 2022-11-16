@@ -18,25 +18,25 @@ function Post({post}) {
   let {id} = useParams()
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  // const getUser = (id) => {
-  //   fetch(baseURL + "/users/" + id, {
-  //     credentials: "include"
-  //   })
-	// 		.then(res => {
-	// 			if(res.status === 200) {
-	// 				return res.json()
-	// 			} else {
-	// 				return []
-	// 			}
-	// 		}).then(data => {
-	// 			console.log('data', data)
-	// 			setUser(data.user)
-	// 		})
-	// }
-  //
-  // useEffect(()=>{
-  //   getUser(id)
-  // }, [])
+  const getUser = (id) => {
+		fetch(baseURL + '/users/' + id,{
+      credentials: "include"
+    })
+			.then(res => {
+				if(res.status === 200) {
+					return res.json()
+				} else {
+					return []
+				}
+			}).then(data => {
+				console.log('data', data)
+				setUser(data.users)
+			})
+	}
+
+  useEffect(()=>{
+    getUser(id)
+  }, [post.user])
 
   const heartHandler = () => {
     setLike(isLiked ? like-1 : like+1)
@@ -49,6 +49,8 @@ function Post({post}) {
       </div>
         <div className="postsTop">
           <div className="postsTopLeft">
+            <img  className="postsProfileImage" alt="" src={user.profilePicture}/>
+            <span className="postsUsername">{user.username}</span>
             <span className="postsDate">{post.date}</span>
           </div>
           <div className="postsTopRight">
