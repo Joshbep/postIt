@@ -2,39 +2,23 @@ import React, { useState, useEffect } from 'react'
 import {Delete, Favorite} from '@material-ui/icons'
 import './post.css'
 import {useParams} from 'react-router-dom';
+import axios from "axios";
 
-let baseURL = ""
-
-if(process.env.NODE_ENV === "development"){
-  baseURL = "http://localhost:3001"
-} else {
-  baseURL = `${process.env.REACT_APP_BACKEND_URL}`
-}
-
-function Post({post, deletePost}) {
+function Post({post}) {
   const [like, setLike] = useState(post.likes);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   let {id} = useParams()
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   //
-  // const getUser = () => {
-	// 	fetch(baseURL + '/users')
-	// 		.then(res => {
-	// 			if(res.status === 200) {
-	// 				return res.json()
-	// 			} else {
-	// 				return []
-	// 			}
-	// 		}).then(data => {
-	// 			console.log('data', data)
-	// 			setUser(data.user)
-	// 		})
-	// }
-  //
-  // useEffect(()=>{
-  //   getUser(id)
-  // }, [])
+
+  useEffect(()=>{
+    const getUsers = async () => {
+      const res = await axios.get(`/users/${post.userId}`);
+      setUser(res.data)
+    }
+    getUsers();
+  }, [])
 
   const heartHandler = () => {
     setLike(isLiked ? like-1 : like+1)
