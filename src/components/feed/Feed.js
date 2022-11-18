@@ -15,7 +15,7 @@ function Feed() {
   const [posts, setPosts] = useState([]);
 
   const getPosts = () => {
-		fetch(baseURL + '/posts/',{
+		fetch(baseURL + '/posts',{
       credentials: "include"
     })
 			.then(res => {
@@ -34,12 +34,23 @@ function Feed() {
     getPosts()
   }, [])
 
+  const deletePost = (id) => {
+    fetch(baseURL + '/posts/' + id, {
+      method: 'DELETE'
+    }).then( res => {
+      const copyPosts = [...posts]
+      const findIndex = posts.findIndex(post => post._id === id)
+      copyPosts.splice(findIndex, 1)
+      setPosts(copyPosts)
+    });
+  }
+
   return (
     <div className="feed">
       <div className="wrapper">
         <Makepost />
-        {posts.map((post, i) => (
-          <Post key={post.id} post={post} />
+        {posts.map((post) => (
+          <Post key={post.id} post={post} deletePost={deletePost}/>
         ))}
       </div>
     </div>

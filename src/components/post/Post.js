@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {MoreVert, Favorite} from '@material-ui/icons'
+import {Delete, Favorite} from '@material-ui/icons'
 import './post.css'
 import {useParams} from 'react-router-dom';
 
@@ -11,32 +11,30 @@ if(process.env.NODE_ENV === "development"){
   baseURL = `${process.env.REACT_APP_BACKEND_URL}`
 }
 
-function Post({post}) {
+function Post({post, deletePost}) {
   const [like, setLike] = useState(post.likes);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   let {id} = useParams()
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
-  const getUser = (id) => {
-		fetch(baseURL + '/users/' + id,{
-      credentials: "include"
-    })
-			.then(res => {
-				if(res.status === 200) {
-					return res.json()
-				} else {
-					return []
-				}
-			}).then(data => {
-				console.log('data', data)
-				setUser(data.users)
-			})
-	}
-
-  useEffect(()=>{
-    getUser(id)
-  }, [post.user])
+  //
+  // const getUser = () => {
+	// 	fetch(baseURL + '/users')
+	// 		.then(res => {
+	// 			if(res.status === 200) {
+	// 				return res.json()
+	// 			} else {
+	// 				return []
+	// 			}
+	// 		}).then(data => {
+	// 			console.log('data', data)
+	// 			setUser(data.user)
+	// 		})
+	// }
+  //
+  // useEffect(()=>{
+  //   getUser(id)
+  // }, [])
 
   const heartHandler = () => {
     setLike(isLiked ? like-1 : like+1)
@@ -54,7 +52,7 @@ function Post({post}) {
             <span className="postsDate">{post.date}</span>
           </div>
           <div className="postsTopRight">
-            <MoreVert />
+            <Delete />
           </div>
         </div>
         <div className="postsCenter">
