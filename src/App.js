@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import Home from './pages/home/Home.js'
 import Profile from "./pages/profile/Profile.js"
@@ -7,13 +7,6 @@ import Login from  "./pages/login/Login.js"
 import Register from  "./pages/register/Register.js"
 import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom'
 
-let baseURL = ""
-
-if(process.env.NODE_ENV === "development"){
-  baseURL = "http://localhost:3001"
-} else {
-  baseURL = `${process.env.REACT_APP_BACKEND_URL}`
-}
 
 function App() {
   return (

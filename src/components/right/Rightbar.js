@@ -1,10 +1,11 @@
 import './rightBar.css';
-import React from 'react'
+import { useContext, useEffect, useState } from "react";
 import {Users} from "../../data.js"
 import Tofollow from '../toFollow/Tofollow.js'
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-
-function Rightbar({profile}) {
+function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <div className="right">

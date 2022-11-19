@@ -1,13 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Headerbar from '../../components/top/Headerbar.js';
 import Leftbar from '../../components/left/Leftbar.js'
 import Rightbar from '../../components/right/Rightbar.js'
 import Feed from '../../components/feed/Feed.js'
+import axios from "axios";
+import {format} from "timeago.js"
+import { useParams } from "react-router";
 import "./profile.css"
 
 
 function Profile() {
+  const [user, setUser] = useState({});
+  const username = useParams().username;
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  useEffect(()=>{
+    const getUsers = async () => {
+      const res = await axios.get(`/users?username=${username}`);
+      setUser(res.data)
+    }
+    getUsers();
+  }, [username])
+
   return (
     <>
     <Headerbar />
@@ -16,24 +30,43 @@ function Profile() {
       <div className="profileCenter">
         <div className="profileCenterTop">
           <div className="profileCover">
-            <img className="profileCoverImg" src={`${PF}post/3.jpeg`} alt=""/>
-            <img className="profileUserImg" src={`${PF}profile/1.jpeg`} alt=""/>
+
+            <img
+            className="profileCoverImg"
+            src={
+                  user.coverPicture
+                    ? PF + user.coverPicture
+                    : PF + "post/world.png"
+                }
+            alt=""
+            />
+
+            <img
+            className="profileUserImg"
+            src={
+                  user.profilePicture
+                    ? PF + user.profilePicture
+                    : PF + "profile/noAvatar.png"
+                }
+            alt=""/>
+
           </div>
           <div className="profileInfo">
-            <h4 className="profileInfoName">Josh Pasour</h4>
-            <span className="profileInfoDescription">Software Engineer</span>
+            <h4 className="profileInfoName">{user.username}</h4>
+            <span className="profileInfoDescription">{user.description}</span>
           </div>
-          <span className="joined">Joined in 2020</span>
+          <span className="joined">{format(user.createdAt)}</span>
           <div className="profileFollowingInfo">
-            <span className="profileFollowing"><strong>221</strong> Following</span>
-            <span className="profileFollowers"><strong>221</strong> followers</span>
+            <span className="profileFollowing"><strong>{user.following}</strong></span>
+            <span className="profileFollowers"><strong>{user.followers}</strong></span>
           </div>
         </div>
         <div className="profileCenterBottom">
           <Feed />
         </div>
       </div>
-      <Rightbar profile/>
+      <Feed username={username} />
+      <Rightbar user={user}/>
     </div>
     </>
   )

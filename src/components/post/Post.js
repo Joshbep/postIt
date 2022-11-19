@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import {Delete, Favorite} from '@material-ui/icons'
 import './post.css'
-import {useParams} from 'react-router-dom';
 import axios from "axios";
 import {format} from "timeago.js"
 import {Link} from 'react-router-dom'
@@ -10,13 +9,12 @@ function Post({post}) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
-  let {id} = useParams()
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   //
 
   useEffect(()=>{
     const getUsers = async () => {
-      const res = await axios.get(`/users/${post.userId}`);
+      const res = await axios.get(`/users?userId=${post.userId}`);
       setUser(res.data)
     }
     getUsers();
