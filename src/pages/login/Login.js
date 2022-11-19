@@ -1,5 +1,6 @@
 import { useContext, useRef } from "react";
 import "./login.css"
+import { loginCall } from "../../apiCalls";
 
 function Login () {
   const email = useRef();
@@ -21,14 +22,14 @@ function Login () {
         <div className="loginRight">
           <form className="loginSection" onSubmit={handleClick}>
             <input
-              placeHolder="Email"
+              placeholder="Email"
               type="email"
               className="loginInput"
               required
               ref={email}
             />
             <input
-              placeHolder="Password"
+              placeholder="Password"
               type="password"
               className="loginInput"
               required
