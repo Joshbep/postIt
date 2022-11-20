@@ -1,15 +1,42 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css"
-import { loginCall } from "../../apiCalls";
+import { CircularProgress } from "@material-ui/core";
+import axios from "axios";
+
+let baseUrl = 'http://localhost:3001'
 
 function Login () {
-  const email = useRef();
-  const password = useRef();
+  const navigate = useNavigate()
 
-  const handleClick = (e) => {
+  const loginUser = async (e) => {
     e.preventDefault()
+    const url = 'http://localhost:3001/users/signin'
+    const loginBody = {
+      username: e.target.username.value,
+      password: e.target.password.value,
+    }
+    try {
 
-    console.log(email.current.value)
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(loginBody),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: "include"
+      })
+
+      console.log(response)
+      console.log("BODY: ",response.body)
+
+      if (response.status === 200) {
+        navigate("/")
+      }
+    }
+    catch (err) {
+      console.log('Error => ', err);
+    }
   }
 
   return (
@@ -20,29 +47,31 @@ function Login () {
           <span className="LoginDescription">Sign In To POST IT</span>
         </div>
         <div className="loginRight">
-          <form className="loginSection" onSubmit={handleClick}>
+          <form className="loginSection" onSubmit={loginUser}>
             <input
-              placeholder="Email"
-              type="email"
+              type="text"
+              placeholder="Username"
+              id="username"
+              name="username"
               className="loginInput"
-              required
-              ref={email}
             />
             <input
+              type="text"
               placeholder="Password"
-              type="password"
+              id="password"
+              name="password"
               className="loginInput"
-              required
-              ref={password}
             />
-            <button className="loginButton">Log in</button>
+            <button className="loginButton" type="submit">Login</button>
             <span className="loginForgot">Forgot Password?</span>
-            <button className="loginRegisterButton">Create a New Account</button>
+            <Link to="/register">
+              <button className="loginRegisterButton">Register</button>
+            </Link>
           </form>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Login;
