@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react'
-import {Delete, Favorite} from '@material-ui/icons'
+import {Delete, Favorite, Edit} from '@material-ui/icons'
 import './post.css'
 import axios from "axios";
 import {format} from "timeago.js"
 import {Link} from 'react-router-dom'
 
-function Post({post}) {
+function Post({post, deletePost}) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
@@ -42,7 +42,10 @@ function Post({post}) {
             <span className="postsDate">{format(post.createdAt)}</span>
           </div>
           <div className="postsTopRight">
-            <Delete />
+            <Delete onClick={() => deletePost(post._id)} >
+            </Delete>
+            <Edit>
+            </Edit>
           </div>
         </div>
         <div className="postsCenter">

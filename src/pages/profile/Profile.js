@@ -62,10 +62,9 @@ function Profile() {
           </div>
         </div>
         <div className="profileCenterBottom">
-          <Feed />
+          <Feed username={username} />
         </div>
       </div>
-      <Feed username={username} />
       <Rightbar user={user}/>
     </div>
     </>

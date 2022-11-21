@@ -4,9 +4,21 @@ import Makepost from '../makePost/Makepost.js'
 import Post from '../post/Post.js'
 import axios from "axios";
 
+let baseUrl = 'http://localhost:3001'
 
 function Feed({username}) {
   const [posts, setPosts] = useState([]);
+
+  const deletePost = (id) => {
+    fetch(baseUrl + '/posts/' + id, {
+      method: 'DELETE'
+    }).then( res => {
+      const copyPosts = [...posts]
+      const findIndex = posts.findIndex(post => post._id === id)
+      copyPosts.splice(findIndex, 1)
+      setPosts(copyPosts)
+    });
+  }
 
   useEffect(()=>{
     const getPosts = async () => {
@@ -24,7 +36,7 @@ function Feed({username}) {
         <Makepost />
         { posts.map((post, i) => {
           return (
-            <Post key={post.id} post={post} />
+            <Post key={post.id} post={post} deletePost={deletePost}/>
           )
         })
         }
