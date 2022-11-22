@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Search, Person, Chat, Notifications } from "@material-ui/icons"
 import "./Headerbar.css"
 import {Link} from 'react-router-dom'
+import axios from "axios";
 
 function Headerbar() {
+
   return (
     <div className="headerBar">
       <div className="headerLeft">

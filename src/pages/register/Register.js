@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import {useNavigate, Navigate, Link} from 'react-router-dom'
 import "./register.css"
 import { CircularProgress } from "@material-ui/core";
@@ -8,50 +8,32 @@ const REGISTER_URL = '/register';
 
 function Register () {
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const username = useRef();
+  const email = useRef();
+  const password = useRef();
+  const passwordAgain = useRef();
 
   const navigate = useNavigate();
 
 
-  const handleChangeUsername = (event) => {
-        setUsername(event.target.value)
-    }
-
-    const handleChangePassword = (event) => {
-        setPassword(event.target.value)
-    }
-
-    const handleChangeEmail = (event) => {
-        setEmail(event.target.value)
-    }
-
-    const handleSubmit = async (e) => {
-      e.preventDefault()
-      const url = 'http://localhost:3001/users/register'
+  const handleClick = async (e) => {
+    e.preventDefault();
+    if (passwordAgain.current.value !== password.current.value) {
+      passwordAgain.current.setCustomValidity("Passwords don't match!");
+    } else {
+      const user = {
+        username: username.current.value,
+        email: email.current.value,
+        password: password.current.value,
+      };
       try {
-        const response = await fetch(url, {
-          method: 'POST',
-          body: JSON.stringify({
-            username: e.target.username.value,
-            password: e.target.password.value,
-            email: e.target.email.value
-          }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        console.log(response)
-        if (response.status === 200) {
-          console.log("worked register")
-          navigate("/signin")
-        }
-      }
-      catch (err) {
-        console.log('Error => ', err);
+        await axios.post("/users/register", user);
+        navigate("/signin");
+      } catch (err) {
+        console.log(err);
       }
     }
+  };
 
 
   return (
@@ -62,34 +44,40 @@ function Register () {
           <span className="LoginDescription">Register To Use POST IT</span>
         </div>
         <div className="loginRight">
-          <form className="loginSection" onSubmit={handleSubmit}>
+          <form className="loginSection" onSubmit={handleClick}>
             <input
               type="text"
-              id="username"
               name="username"
               autoComplete="off"
-              onChange={handleChangeUsername}
+              ref={username}
               required
               placeholder="Username"
               className="loginInput"
             />
             <input
               type="email"
-              id="email"
               name="email"
-              onChange={handleChangeEmail}
+              ref={email}
               required
               placeholder="Email"
               className="loginInput"
             />
             <input
               type="password"
-              id="password"
               name="password"
               autoComplete="off"
-              onChange={handleChangePassword}
+              ref={password}
               required
               placeholder="Password"
+              className="loginInput"
+            />
+            <input
+              type="password"
+              name="password"
+              autoComplete="off"
+              ref={passwordAgain}
+              required
+              placeholder="Type In Your Password Again"
               className="loginInput"
             />
             <button className="loginButton">Sign Up</button>

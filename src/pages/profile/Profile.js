@@ -46,7 +46,7 @@ function Profile() {
             src={
                   user.profilePicture
                     ? PF + user.profilePicture
-                    : PF + "profile/noAvatar.png"
+                    : PF + "profile/avatar.png"
                 }
             alt=""/>
 
