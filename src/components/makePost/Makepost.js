@@ -16,13 +16,17 @@ function Makepost() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const desc = useRef();
   const [file, setFile] = useState(null);
-  
+
   return (
     <div className="posting">
       <div className="postingWrapper">
         <div className="postingTop">
-          <img className="postingImage" src="" alt=""/>
-          <textarea className="postingInput" placeholder="What's on your mind?" ></textarea>
+          <img className="postingImage" src={user.profilePicture ? PF+user.profilePicture : PF+"profile/avatar.png"} alt=""/>
+          <textarea
+            className="postingInput"
+            placeholder={"What's on your mind "+user.username+"?"}
+          >
+          </textarea>
         </div>
         <hr className="postingHr" />
         <div className="postingBottom">
