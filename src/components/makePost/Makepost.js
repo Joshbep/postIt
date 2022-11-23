@@ -7,8 +7,16 @@ import {
   Cancel
 } from '@material-ui/icons'
 import './makePost.css'
+import { useContext, useRef, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
 
 function Makepost() {
+  const { user } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const desc = useRef();
+  const [file, setFile] = useState(null);
+  
   return (
     <div className="posting">
       <div className="postingWrapper">

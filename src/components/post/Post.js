@@ -4,13 +4,19 @@ import './post.css'
 import axios from "axios";
 import {format} from "timeago.js"
 import {Link} from 'react-router-dom'
+import { AuthContext } from "../../context/AuthContext";
 
 function Post({post, deletePost}) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { user: currentUser } = useContext(AuthContext);
   //
+
+  useEffect(() => {
+    setIsLiked(post.likes.includes(currentUser._id));
+  }, [currentUser._id, post.likes]);
 
   useEffect(()=>{
     const getUsers = async () => {
@@ -21,9 +27,12 @@ function Post({post, deletePost}) {
   }, [post.userId])
 
   const heartHandler = () => {
-    setLike(isLiked ? like-1 : like+1)
-    setIsLiked(!isLiked)
-  }
+    try {
+      axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
+    } catch (err) {}
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
+  };
 
   return (
     <div className="posts">
@@ -35,7 +44,11 @@ function Post({post, deletePost}) {
               <img
               className="postsProfileImage"
               alt=""
-              src={user.profilePicture || PF+"profile/avatar.png"}
+              src={
+                user.profilePicture
+                  ? PF + user.profilePicture
+                  : PF+"profile/avatar.png"
+              }
               />
             </Link>
             <span className="postsUsername">{user.username}</span>

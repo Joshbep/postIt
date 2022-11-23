@@ -3,11 +3,13 @@ import React, { useContext, useState, useEffect } from 'react'
 import Makepost from '../makePost/Makepost.js'
 import Post from '../post/Post.js'
 import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 
 let baseUrl = 'http://localhost:3001'
 
 function Feed({username}) {
   const [posts, setPosts] = useState([]);
+  const { user } = useContext(AuthContext);
 
   const deletePost = (id) => {
     fetch(baseUrl + '/posts/' + id, {
@@ -24,11 +26,11 @@ function Feed({username}) {
     const getPosts = async () => {
       const res = username
       ? await axios.get("/posts/profile/" + username)
-      : await axios.get("/posts/timeline/637678c195278b27cfd24d7a")
+      : await axios.get("/posts/timeline/" + user._id)
       setPosts(res.data)
     }
     getPosts();
-  }, [username])
+  }, [username, user._id])
 
   return (
     <div className="feed">
