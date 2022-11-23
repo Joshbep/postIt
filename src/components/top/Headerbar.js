@@ -2,9 +2,12 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Search, Person, Chat, Notifications } from "@material-ui/icons"
 import "./Headerbar.css"
 import {Link} from 'react-router-dom'
+import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
 function Headerbar() {
+  const {user} = useContext(AuthContext)
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
     <div className="headerBar">
@@ -38,7 +41,13 @@ function Headerbar() {
             <span className="barIconCounter">1</span>
           </div>
         </div>
-        <img className="headerImg" alt="" src=""/>
+        <Link to={`/profile/${user.username}`}>
+          <img
+            className="headerImg"
+            alt=""
+            src={user.profilePicture ? PF + user.profilePicture : PF + "profile/avatar.png"}
+          />
+        </Link>
       </div>
     </div>
   );

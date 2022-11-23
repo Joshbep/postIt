@@ -1,10 +1,7 @@
-import { useContext, useState, useEffect, useRef } from "react";
-import {useNavigate, Navigate, Link} from 'react-router-dom'
-import "./register.css"
-import { CircularProgress } from "@material-ui/core";
+import { useRef } from "react";
+import {useNavigate, Link} from 'react-router-dom'
 import axios from "axios";
 
-const REGISTER_URL = '/register';
 
 function Register () {
 
@@ -16,11 +13,8 @@ function Register () {
   const navigate = useNavigate();
 
 
-  const handleClick = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    if (passwordAgain.current.value !== password.current.value) {
-      passwordAgain.current.setCustomValidity("Passwords don't match!");
-    } else {
       const user = {
         username: username.current.value,
         email: email.current.value,
@@ -32,7 +26,6 @@ function Register () {
       } catch (err) {
         console.log(err);
       }
-    }
   };
 
 
@@ -44,11 +37,9 @@ function Register () {
           <span className="LoginDescription">Register To Use POST IT</span>
         </div>
         <div className="loginRight">
-          <form className="loginSection" onSubmit={handleClick}>
+          <form className="loginSection" onSubmit={handleRegister}>
             <input
               type="text"
-              name="username"
-              autoComplete="off"
               ref={username}
               required
               placeholder="Username"
@@ -56,7 +47,6 @@ function Register () {
             />
             <input
               type="email"
-              name="email"
               ref={email}
               required
               placeholder="Email"
@@ -64,23 +54,12 @@ function Register () {
             />
             <input
               type="password"
-              name="password"
-              autoComplete="off"
               ref={password}
               required
               placeholder="Password"
               className="loginInput"
             />
-            <input
-              type="password"
-              name="password"
-              autoComplete="off"
-              ref={passwordAgain}
-              required
-              placeholder="Type In Your Password Again"
-              className="loginInput"
-            />
-            <button className="loginButton">Sign Up</button>
+            <button type="submit" className="loginButton">Sign Up</button>
             <span className="loginForgot">Go to Log In</span>
             <Link to="/signin">
               <button className="loginRegisterButton">Log In</button>
