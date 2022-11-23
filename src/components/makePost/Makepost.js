@@ -4,7 +4,6 @@ import {
   Label,
   Room,
   EmojiEmotions,
-  Cancel
 } from '@material-ui/icons'
 import './makePost.css'
 import { useContext, useRef, useState } from "react";
@@ -14,8 +13,20 @@ import axios from "axios";
 function Makepost() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const desc = useRef();
+  const description = useRef();
   const [file, setFile] = useState(null);
+
+  const submitHandle = async (e) => {
+    e.preventDefault()
+    const newPost = {
+      userId: user._id,
+      description: description.current.value
+    }
+    try{
+      await axios.post("/posts", newPost);
+      window.location.reload();
+    } catch(err){}
+  }
 
   return (
     <div className="posting">
@@ -25,16 +36,25 @@ function Makepost() {
           <textarea
             className="postingInput"
             placeholder={"What's on your mind "+user.username+"?"}
+            ref={description}
           >
           </textarea>
         </div>
         <hr className="postingHr" />
-        <div className="postingBottom">
+        <form className="postingBottom" onSubmit={submitHandle}>
           <div className="postingOptions">
-            <div className="option">
+            <label htmlFor="file" className="option">
               <PermMedia htmlColor="tomato" className="postIcon" />
               <span className="optionText"> Photo/Video</span>
-            </div>
+              <input
+                style={{ display: "none" }}
+                type="file"
+                id="file"
+                accept=".png, .jpeg, .jpg, .heic"
+                onChange={(e) => setFile(e.target.files[0])}
+              >
+              </input>
+            </label>
             <div className="option">
               <Label htmlColor="blue" className="postIcon" />
               <span className="optionText"> Tag</span>
@@ -48,8 +68,8 @@ function Makepost() {
               <span className="optionText"> Emojis</span>
             </div>
           </div>
-          <button className="postingButton">Post</button>
-        </div>
+          <button className="postingButton" type="submit">Post</button>
+        </form>
       </div>
     </div>
   );
