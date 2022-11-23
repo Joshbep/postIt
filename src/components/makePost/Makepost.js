@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   PermMedia,
   Label,
@@ -17,16 +16,28 @@ function Makepost() {
   const [file, setFile] = useState(null);
 
   const submitHandle = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const newPost = {
       userId: user._id,
-      description: description.current.value
+      description: description.current.value,
+    };
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("name", fileName);
+      data.append("file", file);
+      newPost.img = fileName;
+      console.log(newPost);
+      try {
+        await axios.post("/upload", data);
+      } catch (err) {}
     }
-    try{
+    try {
       await axios.post("/posts", newPost);
       window.location.reload();
-    } catch(err){}
-  }
+    } catch (err) {}
+  };
+
 
   return (
     <div className="posting">
@@ -50,10 +61,9 @@ function Makepost() {
                 style={{ display: "none" }}
                 type="file"
                 id="file"
-                accept=".png, .jpeg, .jpg, .heic"
+                accept=".png,.jpeg,.jpg"
                 onChange={(e) => setFile(e.target.files[0])}
-              >
-              </input>
+              />
             </label>
             <div className="option">
               <Label htmlColor="blue" className="postIcon" />
