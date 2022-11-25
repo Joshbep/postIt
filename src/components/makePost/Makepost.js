@@ -3,6 +3,7 @@ import {
   Label,
   Room,
   EmojiEmotions,
+  Cancel,
 } from '@material-ui/icons'
 import './makePost.css'
 import { useContext, useRef, useState } from "react";
@@ -52,6 +53,12 @@ function Makepost() {
           </textarea>
         </div>
         <hr className="postingHr" />
+        {file && (
+          <div className="postImgContainer">
+            <img className="postImg" src={URL.createObjectURL(file)} alt="" />
+            <Cancel className="postCancelImg" onClick={() => setFile(null)} />
+          </div>
+        )}
         <form className="postingBottom" onSubmit={submitHandle}>
           <div className="postingOptions">
             <label htmlFor="file" className="option">

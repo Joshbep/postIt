@@ -1,8 +1,11 @@
 .left {
-  flex: 3;
-  height: calc(100vh - 50px);
+  border-right: 1px solid #e6ecf0;
+  flex: 0.3;
+  min-width: 250px;
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-right: 0px;
   position: sticky;
-  top: 50px;
 }
 
 .leftWrapper {
@@ -19,22 +22,85 @@
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.listItem:hover {
+  background-color: #e8f5fe;
+  border-radius: 30px;
+  color: #1B8AD7;
+  transition: color 100ms ease-in;
 }
 
 .icon {
   margin-right: 15px;
+  padding: 8px;
   cursor: pointer;
 }
 
 .leftButton {
-  width: 90%;
-  height: 50px;
-  margin-top: 20px;
+  background-color: #1B8AD7;
   border: none;
   color: white;
-  padding: 10px;
-  border-radius: 30px;
-  text-transform: inherit;
-  background-color: #1B8AD7;
   font-weight: 900;
+  text-transform: inherit;
+  border-radius: 30px;
+  height: 50px;
+  margin-top: 20px;
+  width: 90%;
+}
+
+.barIconCounter {
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  position: relative;
+  top: -5px;
+  left: -15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.listItemText {
+  font-weight: 800;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.headerImg {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+.appName {
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 30px;
+  font-weight: bold;
+  color: #1B8AD7;
+}
+
+.searchBar{
+  background-color: #e6ecf0;
+  border: none;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-top: 10px;
+  width: 90%
+}
+
+.searchBar > input {
+  border: none;
+  background-color: #e6ecf0;
+  outline: none;
 }

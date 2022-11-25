@@ -39,7 +39,7 @@ function Login () {
               ref={username}
             />
             <input
-              type="text"
+              type="password"
               placeholder="Password"
               id="password"
               name="password"

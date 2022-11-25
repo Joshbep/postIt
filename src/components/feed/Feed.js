@@ -38,6 +38,9 @@ function Feed({username}) {
 
   return (
     <div className="feed">
+    <div className = "feedHeader">
+      <h2>Posts</h2>
+    </div>
       <div className="wrapper">
         {(!username || username === user.username) && <Makepost />}
         { posts.map((post, i) => {

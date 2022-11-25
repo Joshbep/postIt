@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Headerbar from '../../components/top/Headerbar.js';
 import Leftbar from '../../components/left/Leftbar.js'
 import Rightbar from '../../components/right/Rightbar.js'
 import Feed from '../../components/feed/Feed.js'
@@ -24,7 +23,6 @@ function Profile() {
 
   return (
     <>
-    <Headerbar />
     <div className="profile">
       <Leftbar />
       <div className="profileCenter">

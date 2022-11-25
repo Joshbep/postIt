@@ -4,6 +4,7 @@
 
 .profileCenter {
   flex: 9;
+  width: 100%;
 }
 
 .profileCenterTop {
@@ -63,4 +64,5 @@
 
 .profileCenterBottom {
   display: flex;
+  width: 100%;
 }
