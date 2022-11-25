@@ -8,8 +8,13 @@ function Home() {
   return (
     <>
     <div className="homeContainer">
-    <Leftbar />
-    <Feed />
+      <div>
+        <Leftbar />
+      </div>
+      <Feed />
+      <div className="right">
+        <Rightbar />
+      </div>
     </div>
     </>
   )

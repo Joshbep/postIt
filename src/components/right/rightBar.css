@@ -1,5 +1,7 @@
 .right {
   flex: 3.5;
+  position: sticky;
+  overflow: scroll;
 }
 
 .rightWrapper {
@@ -36,4 +38,26 @@
   height: 50px;
   object-fit: cover;
   border-radius: 5px;
+}
+
+.item {
+  -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+  -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+  box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.rightbarFriendList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.rightbarAd {
+  width: 90%;
+  border-radius: 10px;
+  margin: 30px 10px 10px 10px;
 }

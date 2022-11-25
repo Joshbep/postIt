@@ -21,13 +21,15 @@ function Leftbar() {
   return (
     <div className="left">
       <div className="leftWrapper">
-        <Link to="/" style={{textDecoration:"none"}}>
+        <Link className="appName" to="/" style={{textDecoration:"none"}}>
           <span className="appName">Post It</span>
         </Link>
+        <Link to="/" style={{textDecoration:"none"}}>
           <div className="listItem">
             <Home className="icon"/>
             <span className="listItemText">Feed</span>
           </div>
+          </Link>
           <div className="listItem">
             <Search className="icon"/>
             <span className="listItemText">Search</span>
@@ -46,10 +48,12 @@ function Leftbar() {
             <Bookmark className="icon"/>
             <span className="listItemText">Bookmarks</span>
           </div>
+          <Link style={{textDecoration: 'none'}} to={`/profile/${user.username}`}>
           <div className="listItem">
             <Person className="icon"/>
             <span className="listItemText">Profile</span>
           </div>
+          </Link>
           <div className="listItem">
             <MoreHoriz className="icon"/>
             <span className="listItemText">More</span>

@@ -22,11 +22,21 @@ function Rightbar({ user }) {
     getFriends();
   }, [user]);
 
-
-
+  const HomeRightbar = () => {
+      return (
+        <>
+          <img className="rightbarAd" src="assets/ad.png" alt="" />
+          <div className="item">
+            <h4 className="rightbarTitle">Online Friends</h4>
+            <ul className="rightbarFriendList">
+            </ul>
+          </div>
+        </>
+      );
+    };
+    const ProfileRightBar = () => {
   return (
-    <div className="right">
-      <div className="rightWrapper">
+      <div className="item">
           <h4 className="rightbarTitle">Friends</h4>
       <div className="rightbarFollowings">
         {friends.map((friend) => (
@@ -49,9 +59,16 @@ function Rightbar({ user }) {
         </Link>
       ))}
     </div>
-  </div>
-  </div>
+    </div>
   );
+  }
+  return (
+    <div className="rightbar">
+      <div className="rightbarWrapper">
+        {user ? <ProfileRightBar /> : <HomeRightbar />}
+      </div>
+    </div>
+  )
 }
 
 export default Rightbar;

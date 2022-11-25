@@ -24,7 +24,9 @@ function Profile() {
   return (
     <>
     <div className="profile">
+      <div>
       <Leftbar />
+      </div>
       <div className="profileCenter">
         <div className="profileCenterTop">
           <div className="profileCover">
@@ -59,7 +61,9 @@ function Profile() {
           <Feed username={username} />
         </div>
       </div>
-      <Rightbar user={user}/>
+      <div>
+        <Rightbar user={user}/>
+      </div>
     </div>
     </>
   )

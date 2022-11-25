@@ -45,12 +45,12 @@ function Makepost() {
       <div className="postingWrapper">
         <div className="postingTop">
           <img className="postingImage" src={user.profilePicture ? PF+user.profilePicture : PF+"profile/avatar.png"} alt=""/>
-          <textarea
+          <input
             className="postingInput"
-            placeholder={"What's on your mind "+user.username+"?"}
+            placeholder={"What's happening "+user.username+"?"}
             ref={description}
           >
-          </textarea>
+          </input>
         </div>
         <hr className="postingHr" />
         {file && (
@@ -62,7 +62,7 @@ function Makepost() {
         <form className="postingBottom" onSubmit={submitHandle}>
           <div className="postingOptions">
             <label htmlFor="file" className="option">
-              <PermMedia htmlColor="tomato" className="postIcon" />
+              <PermMedia htmlColor="#1C9BEF" className="postIcon" />
               <span className="optionText"> Photo/Video</span>
               <input
                 style={{ display: "none" }}
@@ -73,15 +73,7 @@ function Makepost() {
               />
             </label>
             <div className="option">
-              <Label htmlColor="blue" className="postIcon" />
-              <span className="optionText"> Tag</span>
-            </div>
-            <div className="option">
-              <Room htmlColor="green" className="postIcon" />
-              <span className="optionText"> Location</span>
-            </div>
-            <div className="option">
-              <EmojiEmotions htmlColor="gold" className="postIcon" />
+              <EmojiEmotions htmlColor="#1C9BEF" className="postIcon" />
               <span className="optionText"> Emojis</span>
             </div>
           </div>
