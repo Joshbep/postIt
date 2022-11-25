@@ -20,10 +20,10 @@ function Leftbar() {
 
   return (
     <div className="left">
-      <Link to="/" style={{textDecoration:"none"}}>
-        <span className="appName">Post It</span>
-      </Link>
       <div className="leftWrapper">
+        <Link to="/" style={{textDecoration:"none"}}>
+          <span className="appName">Post It</span>
+        </Link>
           <div className="listItem">
             <Home className="icon"/>
             <span className="listItemText">Feed</span>
@@ -59,14 +59,14 @@ function Leftbar() {
             <input placeholder="Search Post It" className="search"/>
           </div>
         <button className="leftButton"> Post It</button>
+        <Link to={`/profile/${user.username}`}>
+          <img
+            className="headerImg"
+            alt=""
+            src={user.profilePicture ? PF + user.profilePicture : PF + "profile/avatar.png"}
+          />
+        </Link>
       </div>
-      <Link to={`/profile/${user.username}`}>
-        <img
-          className="headerImg"
-          alt=""
-          src={user.profilePicture ? PF + user.profilePicture : PF + "profile/avatar.png"}
-        />
-      </Link>
     </div>
   );
 }

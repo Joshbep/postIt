@@ -4,12 +4,13 @@
   min-width: 250px;
   margin-top: 10px;
   margin-left: 30px;
-  margin-right: 0px;
-  position: sticky;
+  margin-right: 10px;
 }
 
 .leftWrapper {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
 .list {
@@ -78,14 +79,8 @@
   object-fit: cover;
   cursor: pointer;
   object-fit: cover;
-}
-
-.appName {
-  margin-left: 20px;
-  font-weight: bold;
-  font-size: 30px;
-  font-weight: bold;
-  color: #1B8AD7;
+  margin-top: 10px;
+  margin-left: 45px;
 }
 
 .searchBar{
@@ -103,4 +98,12 @@
   border: none;
   background-color: #e6ecf0;
   outline: none;
+}
+
+.appName {
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 30px;
+  font-weight: bold;
+  color: #1B8AD7
 }
