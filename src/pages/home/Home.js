@@ -12,7 +12,6 @@ function Home() {
     <div className="homeContainer">
     <Leftbar />
     <Feed />
-    <Rightbar />
     </div>
     </>
   )

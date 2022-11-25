@@ -56,10 +56,6 @@ function Profile() {
             <span className="profileInfoDescription">{user.description}</span>
           </div>
           <span className="joined">{format(user.createdAt)}</span>
-          <div className="profileFollowingInfo">
-            <span className="profileFollowing"><strong>{user.following}</strong></span>
-            <span className="profileFollowers"><strong>{user.followers}</strong></span>
-          </div>
         </div>
         <div className="profileCenterBottom">
           <Feed username={username} />

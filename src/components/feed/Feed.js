@@ -39,7 +39,7 @@ function Feed({username}) {
   return (
     <div className="feed">
       <div className="wrapper">
-        <Makepost />
+        {(!username || username === user.username) && <Makepost />}
         { posts.map((post, i) => {
           return (
             <Post key={post.id} post={post} deletePost={deletePost}/>
