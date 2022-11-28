@@ -2,15 +2,15 @@ import "./editPost.css"
 import React, { useContext, useState, useEffect } from 'react'
 import {Close} from '@material-ui/icons'
 
-function EditPost({closeEditPopup, post, i, setPostIndex, handleEdit}) {
+function EditPost({closeEditPopup, post, i, handleEdit}) {
   return (
     <div className="formContainer">
       <div className="logo">
         Post It
       </div>
       <h1 className="h1-register">Edit Post</h1>
-        <form onSubmit={(e)=>{handleEdit(e, setPostIndex)}, closeEditPopup}>
-          <label className="label1" htmlFor="description"> Description: </label>
+        <form onSubmit={(e)=>{handleEdit(e)}, closeEditPopup}>
+          <label className="label1" htmlFor="description"> Post Text: </label>
             <input
               className="username"
               type="text"

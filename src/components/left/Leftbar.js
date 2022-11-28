@@ -8,7 +8,7 @@ import {
   Person,
   MoreHoriz,
 } from '@material-ui/icons'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import React, { useContext, useState, useEffect } from 'react'
@@ -17,6 +17,13 @@ import React, { useContext, useState, useEffect } from 'react'
 function Leftbar() {
   const {user} = useContext(AuthContext)
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const navigate = useNavigate()
+
+  const logout = () => {
+    localStorage.clear();
+// you can also like localStorage.removeItem('Token');
+    navigate('/signin')
+  }
 
   return (
     <div className="left">
@@ -70,6 +77,7 @@ function Leftbar() {
             src={user.profilePicture ? PF + user.profilePicture : PF + "profile/avatar.png"}
           />
         </Link>
+        <button className="leftButton" onClick={logout}> Log Out</button>
       </div>
     </div>
   );

@@ -22,6 +22,29 @@ function Feed({username}) {
     });
   }
 
+  const handleEdit = (e, id) => {
+        e.preventDefault()
+        const description = posts.description
+        fetch('http://localhost:3001/posts/' + id, {
+            method: 'PUT',
+            body: JSON.stringify({
+              description: e.target.value
+            }),
+            headers: {
+              'Content-Type' : 'application/json'
+            }
+        })
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            }
+        })
+        .then(resJson => {
+          posts.description = e.target.value
+        })
+        .catch(err => (console.log(err)))
+    }
+
   useEffect(()=>{
     const getPosts = async () => {
       const res = username
@@ -45,7 +68,7 @@ function Feed({username}) {
         {(!username || username === user.username) && <Makepost />}
         { posts.map((post, i) => {
           return (
-            <Post key={post.id} post={post} deletePost={deletePost} i={i}/>
+            <Post key={post.id} post={post} deletePost={deletePost} i={i} handleEdit={handleEdit}/>
           )
         })
         }

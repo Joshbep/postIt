@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 import { AuthContext } from "../../context/AuthContext";
 import EditPost from "../editPost/EditPost.js"
 
-function Post({post, deletePost, i}) {
+function Post({post, deletePost, i, handleEdit}) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
@@ -50,29 +50,6 @@ function Post({post, deletePost, i}) {
       setPostIndex(null)
   }
 
-  const handleEdit = (e, i) => {
-        e.preventDefault()
-        console.log(e)
-        fetch('http://localhost:3001/posts/' + post[i].id, {
-            method: 'PUT',
-            body: JSON.stringify({
-              description: e.target.description.value,
-            }),
-            headers: {
-              'Content-Type' : 'application/json'
-            }
-        })
-        .then(res => {
-            if (res.ok) {
-                return res.json()
-            }
-        })
-        .then(resJson => {
-          post[i].description = e.target.description.value
-        })
-        .catch(err => (console.log(err)))
-    }
-
   return (
     <div className="posts">
       <div className="postsWrapper">
@@ -96,7 +73,7 @@ function Post({post, deletePost, i}) {
           <div className="postsTopRight">
             <Delete onClick={() => deletePost(post._id)} >
             </Delete>
-            <Edit onClick={(e) => {showEditPopup(e, i)}}>
+            <Edit onClick={(e) => {showEditPopup(e)}}>
             </Edit>
           </div>
         </div>

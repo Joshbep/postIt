@@ -61,11 +61,8 @@ function Makepost() {
         )}
         <form className="postingBottom" onSubmit={submitHandle}>
           <div className="postingOptions">
-            <label htmlFor="file" className="option">
-              <PermMedia htmlColor="#1C9BEF" className="postIcon" />
-              <span className="optionText"> Photo/Video</span>
+            <label htmlFor="file">
               <input
-                style={{ display: "none" }}
                 type="file"
                 id="file"
                 accept=".png,.jpeg,.jpg"

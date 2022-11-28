@@ -1,8 +1,8 @@
 .formContainer {
    width: 300px;
-   height: 450px;
-   padding: 20px;
-   border-radius: 10px;
+   height: 350px;
+   padding: 10px;
+   border-radius: 20px;
    background-color: rgba(0, 0, 0, 0.7);
    position: fixed;
    top: 0;
@@ -13,16 +13,16 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   justify-content: space-around;
+   justify-content: center;
  }
 
  .logo {
    font-size: 30px;
-   color: #30C6D3;
+   font-weight: bold;
+   color: #1B8AD7;
    align-items: center;
    font-weight: 700px;
    margin-top: -70px;
-   margin-bottom: -140px;
  }
 
  .h1-register {
@@ -34,20 +34,26 @@
  }
 
  .username {
-   margin-bottom: 5px;
+   margin-bottom: 35px;
+   margin-top: 50px;
  }
 
- .label {
+ .label1 {
    color: white;
    text-decoration: none;
  }
 
  .edit{
-   margin-top: 25px;
+   margin-top: 15px;
+   padding: 5px;
    font-size:large;
    border-radius: 10px;
-   background-color: #30C6D3;
+   border: #1B8AD7;;
+   background-color: #1B8AD7;
    color: white;
+   display: flex;
+   justify-content: center;
+   margin-left: 75px;
  }
 
  .registerCancel {
