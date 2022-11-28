@@ -5,11 +5,14 @@ import axios from "axios";
 import {format} from "timeago.js"
 import {Link} from 'react-router-dom'
 import { AuthContext } from "../../context/AuthContext";
+import EditPost from "../editPost/EditPost.js"
 
-function Post({post, deletePost}) {
+function Post({post, deletePost, i}) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
+  const [postIndex, setPostIndex] = useState(null)
+  const [showEdit, setShowEdit] = useState(false)
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user: currentUser } = useContext(AuthContext);
   //
@@ -34,6 +37,42 @@ function Post({post, deletePost}) {
     setIsLiked(!isLiked);
   };
 
+  const showEditPopup = (e, i) => {
+    console.log("form popup triggered")
+    console.log(i)
+    setShowEdit(!showEdit)
+    setPostIndex(i)
+  }
+
+  const closeEditPopup = () => {
+    console.log("form popup closed")
+      setShowEdit(!showEdit)
+      setPostIndex(null)
+  }
+
+  const handleEdit = (e, i) => {
+        e.preventDefault()
+        console.log(e)
+        fetch('http://localhost:3001/posts/' + post[i].id, {
+            method: 'PUT',
+            body: JSON.stringify({
+              description: e.target.description.value,
+            }),
+            headers: {
+              'Content-Type' : 'application/json'
+            }
+        })
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            }
+        })
+        .then(resJson => {
+          post[i].description = e.target.description.value
+        })
+        .catch(err => (console.log(err)))
+    }
+
   return (
     <div className="posts">
       <div className="postsWrapper">
@@ -57,7 +96,7 @@ function Post({post, deletePost}) {
           <div className="postsTopRight">
             <Delete onClick={() => deletePost(post._id)} >
             </Delete>
-            <Edit>
+            <Edit onClick={(e) => {showEditPopup(e, i)}}>
             </Edit>
           </div>
         </div>
@@ -78,6 +117,9 @@ function Post({post, deletePost}) {
             <span className="postsComment">{post.comments} comments</span>
           </div>
         </div>
+        {showEdit && (
+          <EditPost post={post} setPostIndex={postIndex} handleEdit={handleEdit} closeEditPopup={closeEditPopup}/>
+        )}
     </div>
   );
 }

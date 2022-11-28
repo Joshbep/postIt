@@ -45,7 +45,7 @@ function Feed({username}) {
         {(!username || username === user.username) && <Makepost />}
         { posts.map((post, i) => {
           return (
-            <Post key={post.id} post={post} deletePost={deletePost}/>
+            <Post key={post.id} post={post} deletePost={deletePost} i={i}/>
           )
         })
         }
