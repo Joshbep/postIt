@@ -5,7 +5,14 @@ import Post from '../post/Post.js'
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
-let baseUrl = 'http://localhost:3001'
+
+let baseUrl = ""
+
+if(process.env.NODE_ENV === "development"){
+  baseUrl = "http://localhost:3001"
+} else {
+  baseUrl = `${process.env.REACT_APP_BACKEND_URL}`
+}
 
 function Feed({username}) {
   const [posts, setPosts] = useState([]);
@@ -25,7 +32,7 @@ function Feed({username}) {
   const handleEdit = (e, id) => {
         e.preventDefault()
         const description = posts.description
-        fetch('http://localhost:3001/posts/' + id, {
+        fetch(baseUrl + '/posts/' + id, {
             method: 'PUT',
             body: JSON.stringify({
               description: e.target.value
