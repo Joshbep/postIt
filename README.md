@@ -1,3 +1,57 @@
+## Project Description
+This is a social media clone where users can gather and interact and post about their life. I look to expand on this app and build out more function for the users soon.
+
+## Tech Stack
+> Front End:
+React
+Javascript
+CSS
+
+> Backend:
+Express
+Node
+MongoDB
+
+## Models
+- User Model
+> username: type: string, required: true
+email: type: string, required: true
+password: type: string, required: true
+profilePicture: type: string, required: true
+followers: type: array
+following: type: array
+
+- Post Model
+> userID: type: string, required: true
+description: type: string, required: true
+photo: type: string, required: true
+likes: type: array
+comments: [{
+text: string,
+userID: {type: string, ref: user}
+}]
+
+## Wireframes
+> Wireframes with basic page layouts<br />
+> Copy and paste or drag and drop your images here.
+<img width="449" alt="Screen Shot 2022-11-01 at 5 06 57 PM" src="https://media.git.generalassemb.ly/user/43394/files/77238941-511d-4ed4-bc9c-cf5ac996e488">
+<img width="452" alt="Screen Shot 2022-11-01 at 5 04 38 PM" src="https://media.git.generalassemb.ly/user/43394/files/bc0eb46f-17c7-41a5-bc35-535dc9e211f7">
+<img width="451" alt="Screen Shot 2022-11-01 at 5 04 52 PM" src="https://media.git.generalassemb.ly/user/43394/files/60698d11-22fa-48ef-9244-df61741d5653">
+<img width="452" alt="Screen Shot 2022-11-01 at 5 10 18 PM" src="https://media.git.generalassemb.ly/user/43394/files/ce86a631-b6d9-4340-98df-0494955d4c6f">
+
+## User Stories
+> Add user stories following the _As a [type of user], I want [what the user wants], so that [what it helps accomplish]_ format.
+> As a user, I want to register or log in to my account
+As a user, I want to see all recent posts on the homepage
+As a user, I want to be able to create a new post
+As a user, I want to be able to delete a new post
+As a user, I want to be able to edit a post
+
+### Stretch Goals To Come
+> create the ability to follow other users
+create the ability to message users
+create components for the homepage like recommended friends and online friends
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
