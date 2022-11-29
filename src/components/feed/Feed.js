@@ -6,13 +6,8 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
 
-let baseUrl = ""
+let baseUrl = "http://localhost:3001"
 
-if(process.env.NODE_ENV === "development"){
-  baseUrl = "http://localhost:3001"
-} else {
-  baseUrl = `${process.env.REACT_APP_BACKEND_URL}`
-}
 
 function Feed({username}) {
   const [posts, setPosts] = useState([]);

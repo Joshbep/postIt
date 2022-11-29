@@ -8,7 +8,6 @@ function Register () {
   const username = useRef();
   const email = useRef();
   const password = useRef();
-  const passwordAgain = useRef();
 
   const navigate = useNavigate();
 
