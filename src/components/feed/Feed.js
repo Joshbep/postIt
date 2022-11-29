@@ -47,6 +47,11 @@ function Feed({username}) {
         .catch(err => (console.log(err)))
     }
 
+//array.sort(function(a,b){
+  // Turn your strings into dates, and then subtract them
+  // to get a value that is either negative, positive, or zero.
+//  return new Date(b.date) - new Date(a.date);
+//});
   useEffect(()=>{
     const getPosts = async () => {
       const res = username

@@ -1,4 +1,7 @@
-
+//https://reactjs.org/docs/context.html
+// a couple resources on auth context and how I figured it out
+//https://www.youtube.com/watch?v=X3qyxo_UTR4
+//https://www.youtube.com/watch?v=64RiVcXhxN0
 import { createContext, useEffect, useReducer } from "react";
 import AuthReducer from "./AuthReducer";
 

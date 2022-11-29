@@ -61,10 +61,6 @@ function Leftbar() {
             <span className="listItemText">Profile</span>
           </div>
           </Link>
-          <div className="listItem">
-            <MoreHoriz className="icon"/>
-            <span className="listItemText">More</span>
-          </div>
           <div className="searchBar">
             <Search className="searchIcon"/>
             <input placeholder="Search Post It" className="search"/>
