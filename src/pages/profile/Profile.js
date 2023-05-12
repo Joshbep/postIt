@@ -8,6 +8,7 @@ import { useParams } from "react-router";
 import "./profile.css"
 
 
+//profile
 function Profile() {
   const [user, setUser] = useState({});
   const username = useParams().username;
