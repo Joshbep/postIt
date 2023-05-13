@@ -2,6 +2,13 @@ import { useRef } from "react";
 import {useNavigate, Link} from 'react-router-dom'
 import axios from "axios";
 
+let baseURL = ""
+
+if(process.env.NODE_ENV === "development"){
+  baseURL = "http://localhost:3001"
+} else {
+  baseURL = `${process.env.REACT_APP_BACKEND_URL}`
+}
 
 function Register () {
 
@@ -20,7 +27,7 @@ function Register () {
         password: password.current.value,
       };
       try {
-        await axios.post("/users/register", user);
+        await axios.post(baseURL + "/users/register", user);
         navigate("/signin");
       } catch (err) {
         console.log(err);

@@ -12,6 +12,14 @@ import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
+let baseURL = ""
+
+if(process.env.NODE_ENV === "development"){
+  baseURL = "http://localhost:3001"
+} else {
+  baseURL = `${process.env.REACT_APP_BACKEND_URL}`
+}
+
 function Makepost() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -32,11 +40,11 @@ function Makepost() {
       newPost.img = fileName;
       console.log(newPost);
       try {
-        await axios.post("/upload", data);
+        await axios.post( baseURL + "/upload", data);
       } catch (err) {}
     }
     try {
-      await axios.post("/posts", newPost);
+      await axios.post(baseURL + "/posts", newPost);
       window.location.reload();
     } catch (err) {}
   };

@@ -2,6 +2,14 @@ import "./editPost.css"
 import React, { useContext, useState, useEffect } from 'react'
 import {Close} from '@material-ui/icons'
 
+let baseURL = ""
+
+if(process.env.NODE_ENV === "development"){
+  baseURL = "http://localhost:3001"
+} else {
+  baseURL = `${process.env.REACT_APP_BACKEND_URL}`
+}
+
 function EditPost({closeEditPopup, post, i, handleEdit}) {
   return (
     <div className="formContainer">

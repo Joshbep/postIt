@@ -7,6 +7,14 @@ import {Link} from 'react-router-dom'
 import { AuthContext } from "../../context/AuthContext";
 import EditPost from "../editPost/EditPost.js"
 
+let baseURL = ""
+
+if(process.env.NODE_ENV === "development"){
+  baseURL = "http://localhost:3001"
+} else {
+  baseURL = `${process.env.REACT_APP_BACKEND_URL}`
+}
+
 function Post({post, deletePost, i, handleEdit}) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
@@ -23,7 +31,7 @@ function Post({post, deletePost, i, handleEdit}) {
 
   useEffect(()=>{
     const getUsers = async () => {
-      const res = await axios.get(`/users?userId=${post.userId}`);
+      const res = await axios.get(baseURL + `/users?userId=${post.userId}`);
       setUser(res.data)
     }
     getUsers();

@@ -7,6 +7,13 @@ import {format} from "timeago.js"
 import { useParams } from "react-router";
 import "./profile.css"
 
+let baseURL = ""
+
+if(process.env.NODE_ENV === "development"){
+  baseURL = "http://localhost:3001"
+} else {
+  baseURL = `${process.env.REACT_APP_BACKEND_URL}`
+}
 
 //profile
 function Profile() {
@@ -16,7 +23,7 @@ function Profile() {
 
   useEffect(()=>{
     const getUsers = async () => {
-      const res = await axios.get(`/users?username=${username}`);
+      const res = await axios.get(baseURL+ `/users?username=${username}`);
       setUser(res.data)
     }
     getUsers();

@@ -6,15 +6,20 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
 
-let baseUrl = "http://localhost:3001"
+let baseURL = ""
 
+if(process.env.NODE_ENV === "development"){
+  baseURL = "http://localhost:3001"
+} else {
+  baseURL = `${process.env.REACT_APP_BACKEND_URL}`
+}
 
 function Feed({username}) {
   const [posts, setPosts] = useState([]);
   const { user } = useContext(AuthContext);
 
   const deletePost = (id) => {
-    fetch(baseUrl + '/posts/' + id, {
+    fetch(baseURL + '/posts/' + id, {
       method: 'DELETE'
     }).then( res => {
       const copyPosts = [...posts]
@@ -27,7 +32,7 @@ function Feed({username}) {
   const handleEdit = (e, id) => {
         e.preventDefault()
         const description = posts.description
-        fetch(baseUrl + '/posts/' + id, {
+        fetch(baseURL + '/posts/' + id, {
             method: 'PUT',
             body: JSON.stringify({
               description: e.target.value
@@ -55,8 +60,8 @@ function Feed({username}) {
   useEffect(()=>{
     const getPosts = async () => {
       const res = username
-      ? await axios.get("/posts/profile/" + username)
-      : await axios.get("/posts/timeline/" + user._id)
+      ? await axios.get( baseURL + "/posts/profile/" + username)
+      : await axios.get(baseURL + "/posts/timeline/" + user._id)
       setPosts(
         res.data.sort((p1, p2) => {
           return new Date(p2.createdAt) - new Date(p1.createdAt);

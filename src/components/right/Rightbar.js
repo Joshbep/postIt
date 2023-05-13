@@ -5,6 +5,14 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
+let baseURL = ""
+
+if(process.env.NODE_ENV === "development"){
+  baseURL = "http://localhost:3001"
+} else {
+  baseURL = `${process.env.REACT_APP_BACKEND_URL}`
+}
+
 function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
@@ -13,7 +21,7 @@ function Rightbar({ user }) {
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await axios.get("/users/friends/" + user._id);
+        const friendList = await axios.get(baseURL + "/users/friends/" + user._id);
         setFriends(friendList.data);
       } catch (err) {
         console.log(err);

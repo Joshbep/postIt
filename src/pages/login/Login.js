@@ -6,6 +6,13 @@ import "./login.css"
 import { CircularProgress } from "@material-ui/core";
 import axios from "axios";
 
+let baseURL = ""
+
+if(process.env.NODE_ENV === "development"){
+  baseURL = "http://localhost:3001"
+} else {
+  baseURL = `${process.env.REACT_APP_BACKEND_URL}`
+}
 
 //login
 function Login () {
